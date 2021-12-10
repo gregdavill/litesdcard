@@ -520,10 +520,9 @@ class SDPHYIOGen(SDPHYIO):
         if hasattr(pads, "rst"):
             self.comb += pads.rst.eq(0)
 
-        # Clk
         self.specials += SDROutput(
             clk = ClockSignal("sys"),
-            i   = clocker.clk,
+            i   = ~clocker.clk,
             o   = pads.clk
         )
 
